@@ -82,13 +82,6 @@ class sonarqube (
   $tmpzip = "${download_dir}/${package_name}-${version}.zip"
   $script = "${installdir}/bin/${arch}/sonar.sh"
 
-  if ! defined(Package[unzip]) {
-    package { 'unzip':
-      ensure => present,
-      before => Exec[untar],
-    }
-  }
-
   user { $user:
     ensure     => present,
     home       => $real_home,
